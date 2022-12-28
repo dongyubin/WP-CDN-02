@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-    - uses: jakejarvis/backblaze-b2-action@master
+    - uses: alximy/backblaze-b2-action@master
       env:
         SOURCE_DIR: './WP-CDN-02'
         B2_BUCKET: ${{ secrets.B2_BUCKET }}
