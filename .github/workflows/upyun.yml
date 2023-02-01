@@ -1,0 +1,22 @@
+name: deploy
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+    TZ: Asia/Shanghai # 设置当前环境时区
+
+jobs:
+  deploy:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: deploy-upyun
+        uses: bwcxyk/upyun-upx-action@1.1
+        env:
+          bucket: ${{ secrets.BUCKET }}
+          operator: ${{ secrets.OPERATOR }}
+          operator_password: ${{ secrets.OPERATOR_PASSWORD }}
+          local_path: /github/workspace
+          remote_path: /
