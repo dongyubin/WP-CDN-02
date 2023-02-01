@@ -12,11 +12,13 @@ jobs:
   deploy:
     runs-on: ubuntu-20.04
     steps:
-      - name: deploy-upyun
-        uses: dongyubin/upyun-upx-action@main
-        env:
-          bucket: ${{ secrets.BUCKET }}
-          operator: ${{ secrets.OPERATOR }}
-          operator_password: ${{ secrets.OPERATOR_PASSWORD }}
-          local_path: ./
-          remote_path: /WP-CDN-03/
+      - name: view directory files
+        run: ls -a /github/workspace/
+#       - name: deploy-upyun
+#         uses: dongyubin/upyun-upx-action@main
+#         env:
+#           bucket: ${{ secrets.BUCKET }}
+#           operator: ${{ secrets.OPERATOR }}
+#           operator_password: ${{ secrets.OPERATOR_PASSWORD }}
+#           local_path: ./
+#           remote_path: /WP-CDN-03/
