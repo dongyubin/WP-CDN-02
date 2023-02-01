@@ -18,5 +18,5 @@ jobs:
           bucket: ${{ secrets.BUCKET }}
           operator: ${{ secrets.OPERATOR }}
           operator_password: ${{ secrets.OPERATOR_PASSWORD }}
-          local_path: ./2023
+          local_path: ./
           remote_path: /WP-CDN-03/
