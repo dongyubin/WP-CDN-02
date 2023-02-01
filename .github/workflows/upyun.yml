@@ -14,8 +14,7 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - run: rm -rf /github/workspace/.git/ && rm -rf /github/workspace/.github
-      - name: sync-upyun
-        uses: dongyubin/upyun-upx-action@main
+      - uses: dongyubin/upyun-upx-action@main
         env:
           bucket: ${{ secrets.BUCKET }}
           operator: ${{ secrets.OPERATOR }}
