@@ -1,4 +1,4 @@
-name: deploy
+name: Sync Upyun Bucket
 
 on:
   push:
