@@ -6,6 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
+    - run: rm -rf /github/workspace/.git/ && rm -rf /github/workspace/.github
     - uses: alximy/backblaze-b2-action@master
       env:
         SOURCE_DIR: '/github/workspace'
