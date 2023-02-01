@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: view directory files
-        run: ls -a /github/workspace/
+        run: ls -a ./
 #       - name: deploy-upyun
 #         uses: dongyubin/upyun-upx-action@main
 #         env:
