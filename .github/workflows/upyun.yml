@@ -13,13 +13,11 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@master
-      - name: view directory files
-        run: ls -a /home/runner/work/WP-CDN-02/WP-CDN-02
-#       - name: deploy-upyun
-#         uses: dongyubin/upyun-upx-action@main
-#         env:
-#           bucket: ${{ secrets.BUCKET }}
-#           operator: ${{ secrets.OPERATOR }}
-#           operator_password: ${{ secrets.OPERATOR_PASSWORD }}
-#           local_path: ./
-#           remote_path: /WP-CDN-03/
+      - name: sync-upyun
+        uses: dongyubin/upyun-upx-action@main
+        env:
+          bucket: ${{ secrets.BUCKET }}
+          operator: ${{ secrets.OPERATOR }}
+          operator_password: ${{ secrets.OPERATOR_PASSWORD }}
+          local_path: /home/runner/work/WP-CDN-02/WP-CDN-02
+          remote_path: /WP-CDN-02/
