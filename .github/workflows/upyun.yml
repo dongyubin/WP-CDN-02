@@ -13,6 +13,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@master
+      - run: rm -rf /github/workspace/.git/ && rm -rf /github/workspace/.github
       - name: sync-upyun
         uses: dongyubin/upyun-upx-action@main
         env:
