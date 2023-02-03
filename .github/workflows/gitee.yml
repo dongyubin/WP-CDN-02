@@ -1,0 +1,12 @@
+name: Sync To Gitee
+on: push
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: wearerequired/git-mirror-action@master
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.GITEE_PRIVATE_KEY }}
+        with:
+          source-repo: "git@github.com:dongyubin/WP-CDN-02.git" # github仓库地址
+          destination-repo: "git@gitee.com:wangdudyb/WP-CDN-02.git" # gitee仓库地址
