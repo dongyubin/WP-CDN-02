@@ -4,9 +4,9 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: rsync deployments
-      uses: burnett01/rsync-deployments@5.2.1
+    - uses: actions/checkout@master
+    - run: rm -rf /github/workspace/.git/ && rm -rf /github/workspace/.github
+    - uses: burnett01/rsync-deployments@5.2.1
       with:
         switches: -avzhP --update
         path: /home/runner/work/WP-CDN-02/WP-CDN-02/
