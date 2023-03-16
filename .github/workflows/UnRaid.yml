@@ -8,7 +8,7 @@ jobs:
     - run: rm -rf /github/workspace/.git/ && rm -rf /github/workspace/.github
     - uses: burnett01/rsync-deployments@5.2.1
       with:
-        switches: -avzr --delete
+        switches: -avzr --delete --exclude '.git'
         path: ./
         remote_path: ${{ secrets.DEPLOY_PATH }}
         remote_host: ${{ secrets.DEPLOY_HOST }}
