@@ -19,5 +19,5 @@ jobs:
           bucket: ${{ secrets.BUCKET }}
           operator: ${{ secrets.OPERATOR }}
           password: ${{ secrets.OPERATOR_PASSWORD }}
-          dir: /github/workspace/
+          dir: WP-CDN-02/
 #           remote_path: /WP-CDN-02/
