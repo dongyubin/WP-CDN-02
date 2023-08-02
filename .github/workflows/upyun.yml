@@ -12,12 +12,24 @@ jobs:
   deploy:
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@master
-      - run: rm -rf /github/workspace/.git/ && rm -rf /github/workspace/.github
-      - uses: her-cat/upyun-deployer@v1
+      # - uses: actions/checkout@master
+      # - run: rm -rf /github/workspace/.git/ && rm -rf /github/workspace/.github
+      - name: Checkout
+        uses: actions/checkout@v3
         with:
+          submodules: recursive
+          fetch-depth: 0
+      - name: deploy-upyun 
+        uses: bwcxyk/upyun-upx-action@1.2
+        env:
           bucket: ${{ secrets.BUCKET }}
           operator: ${{ secrets.OPERATOR }}
-          password: ${{ secrets.OPERATOR_PASSWORD }}
-          dir: ./
-#           remote_path: /WP-CDN-02/
+          operator_password: ${{ secrets.OPERATOR_PASSWORD }}
+          local_path: /home/runner/work/WP-CDN-02/WP-CDN-02
+          remote_path: /WP-CDN-02/
+      # - uses: her-cat/upyun-deployer@v1
+      #   with:
+      #     bucket: ${{ secrets.BUCKET }}
+      #     operator: ${{ secrets.OPERATOR }}
+      #     password: ${{ secrets.OPERATOR_PASSWORD }}
+      #     dir: ./
