@@ -4,10 +4,8 @@ on:
   push:
     branches:
       - main
-
 env:
     TZ: Asia/Shanghai # 设置当前环境时区
-
 jobs:
   deploy:
     runs-on: ubuntu-20.04
