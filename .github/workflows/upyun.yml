@@ -19,5 +19,5 @@ jobs:
           bucket: ${{ secrets.BUCKET }}
           operator: ${{ secrets.OPERATOR }}
           password: ${{ secrets.OPERATOR_PASSWORD }}
-          dir: WP-CDN-02/
+          dir: .
 #           remote_path: /WP-CDN-02/
