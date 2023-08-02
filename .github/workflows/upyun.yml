@@ -14,7 +14,8 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - run: rm -rf /github/workspace/.git/ && rm -rf /github/workspace/.github
-      - uses: her-cat/upyun-deployer@v1
+      # - uses: her-cat/upyun-deployer@v1
+      - uses: dongyubin/upyun-deployer
         with:
           bucket: ${{ secrets.BUCKET }}
           operator: ${{ secrets.OPERATOR }}
