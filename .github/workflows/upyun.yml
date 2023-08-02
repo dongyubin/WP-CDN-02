@@ -21,4 +21,4 @@ jobs:
           operator: ${{ secrets.OPERATOR }}
           password: ${{ secrets.OPERATOR_PASSWORD }}
           dir: ./
-         localPath: /WP-CDN-02/
+          localPath: /WP-CDN-02/
