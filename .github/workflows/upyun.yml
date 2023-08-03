@@ -13,10 +13,11 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@master
-      - uses: her-cat/upyun-deployer@v1
+      - uses: her-cat/upyun-deployer@v1.0.1
         with:
           bucket: ${{ secrets.BUCKET }}
           operator: ${{ secrets.OPERATOR }}
           password: ${{ secrets.OPERATOR_PASSWORD }}
+          publish_dir: 'WP-CDN-02'
           # dir: ./
 #           remote_path: /WP-CDN-02/
