@@ -26,6 +26,6 @@ jobs:
           for file in $(find . -type f \( -name "*.jpg" -o -name "*.jpeg" -o -name "*.png" \)); do
             webp_file="${file%.*}.webp"
             if [ ! -f "$webp_file" ]; then
-              npx squoosh-cli --mozjpeg '{"quality": 75}' --avif '{"quality": 75}' --webp '{"quality": 75}' --output "$webp_file" "$file"
+              npx @squoosh/cli --mozjpeg '{"quality": 75}' --avif '{"quality": 75}' --webp '{"quality": 75}' --output "$webp_file" "$file"
             fi
           done
