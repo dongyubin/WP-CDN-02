@@ -19,9 +19,9 @@ jobs:
     steps:
     - uses: actions/checkout@master
     - run: rm -rf /github/workspace/.git/ && rm -rf /github/workspace/.github
-    # - uses: alximy/backblaze-b2-action@master
+    - uses: alximy/backblaze-b2-action@master
     # - uses: getpersio/backblaze-b2-action@main
-    - uses: jakejarvis/backblaze-b2-action@master
+    # - uses: jakejarvis/backblaze-b2-action@master
       env:
         SOURCE_DIR: '/github/workspace'
         B2_BUCKET: ${{ secrets.B2_BUCKET }}
