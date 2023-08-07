@@ -1,5 +1,17 @@
 name: Sync To UnRaid
-on: push
+# on: push
+on:
+  workflow_run:
+    workflows: ["Image Conversion"]
+    types:
+      - completed
+  workflow_dispatch:
+    inputs:
+      unconditional-invoking:
+        description: 'UnRaid同步文件'
+        type: boolean
+        required: true
+        default: true
 jobs:
   deploy:
     runs-on: ubuntu-latest

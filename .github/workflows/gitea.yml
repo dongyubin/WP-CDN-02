@@ -1,5 +1,17 @@
 name: Sync To Gitea
-on: push
+# on: push
+on:
+  workflow_run:
+    workflows: ["Image Conversion"]
+    types:
+      - completed
+  workflow_dispatch:
+    inputs:
+      unconditional-invoking:
+        description: 'Gitea同步文件'
+        type: boolean
+        required: true
+        default: true
 jobs:
   sync:
     runs-on: ubuntu-latest
