@@ -1,0 +1,31 @@
+name: Image Conversion
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Convert images to WebP
+        run: |
+          for file in $(find . -type f \( -name "*.jpg" -o -name "*.jpeg" -o -name "*.png" \)); do
+            webp_file="${file%.*}.webp"
+            if [ ! -f "$webp_file" ]; then
+              npx squoosh-cli --mozjpeg '{"quality": 75}' --avif '{"quality": 75}' --webp '{"quality": 75}' --output "$webp_file" "$file"
+            fi
+          done
