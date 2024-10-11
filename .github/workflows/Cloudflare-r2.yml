@@ -1,0 +1,29 @@
+name: Sync CloudFlare R2
+# on: push
+on:
+  workflow_run:
+    workflows: ["Image Conversion"]
+    types:
+      - completed
+  workflow_dispatch:
+    inputs:
+      unconditional-invoking:
+        description: 'CloudFlare R2同步文件'
+        type: boolean
+        required: true
+        default: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - run: rm -rf /github/workspace/.git/ && rm -rf /github/workspace/.github
+    # Setup Rclone
+    - name: Setup Rclone
+      uses: AnimMouse/setup-rclone@v1
+      with:
+        rclone_config: ${{ secrets.RCLONE_CONFIG }}
+    - name: Rclone Sync Cloudflare
+      run: |
+          rclone copy ./ Cloudflare:${{ secrets.CF_R2_BUCKET }} --transfers=8 --checkers=16 --exclude=.git/** --exclude=.github/** --exclude=README.md
