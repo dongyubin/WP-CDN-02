@@ -26,4 +26,4 @@ jobs:
         rclone_config: ${{ secrets.RCLONE_CONFIG }}
     - name: Rclone Sync Cloudflare
       run: |
-          rclone copy ./ Cloudflare:${{ secrets.CF_R2_BUCKET }} --transfers=8 --checkers=16 --exclude=.git/** --exclude=.github/** --exclude=README.md
+          rclone copy ./ cloudflare_r2:${{ secrets.CF_R2_BUCKET }} --transfers=8 --checkers=16 --exclude=.git/** --exclude=.github/** --exclude=README.md
