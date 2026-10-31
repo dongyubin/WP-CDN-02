@@ -5,16 +5,23 @@ on:
     branches:
       - main
 
+concurrency:
+  group: image-conversion
+  cancel-in-progress: false
+
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
+        with:
+          # 排队后执行时取最新 main，避免重复转换前一轮已提交的 webp
+          ref: ${{ github.ref_name }}
 
       - name: Set up Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
           node-version: '14'
 
@@ -35,6 +42,7 @@ jobs:
       - name: Commit and push changes
         uses: EndBug/add-and-commit@v9
         with:
+          pull: '--rebase --autostash'
           author_name: dongyubin
           author_email: 892457803@qq.com
           message: Convert images to WebP
