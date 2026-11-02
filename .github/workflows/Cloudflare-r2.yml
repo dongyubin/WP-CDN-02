@@ -36,4 +36,7 @@ jobs:
         rclone_config: ${{ secrets.RCLONE_CONFIG }}
     - name: Rclone Sync Cloudflare
       run: |
-          rclone copy ./ cloudflare_r2:${{ secrets.CF_R2_BUCKET }}/wp-cdn-02 --transfers=8 --checkers=16 --exclude=.git/** --exclude=.github/** --exclude=README.md
+          rclone copy ./ cloudflare_r2:${{ secrets.CF_R2_BUCKET }}/wp-cdn-02 \
+            --size-only --fast-list --transfers=8 --checkers=16 \
+            --exclude=.git/** --exclude=.github/** --exclude=README.md \
+            --stats=30s --stats-one-line -v
